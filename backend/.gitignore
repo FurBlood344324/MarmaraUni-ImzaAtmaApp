@@ -1,0 +1,42 @@
+# Python Files
+**/__pycache__/
+migrations/
+*.pyc
+venv/
+
+# Database Files
+instance/
+
+# IDE
+.vscode
+
+# Environment variables
+.env
+
+# macOS
+.DS_Store
+
+# Logs
+*.log
+
+# Test coverage
+htmlcov/
+.coverage
+*.cover
+*.py,cover
+
+# MyPy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Pytest
+.pytest_cache/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# Build
+build/
+dist/
+*.egg-info/
