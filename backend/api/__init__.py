@@ -1,6 +1,6 @@
 from flask import Flask
-from .routes import api_bp 
-from .models import db
+from api.controllers.resp_controller import api_bp 
+from api.entities.resp_entity import db
 
 def create_app():
     app = Flask(__name__)
@@ -18,5 +18,4 @@ def create_app():
     
     app.register_blueprint(api_bp)
 
-      
     return app
