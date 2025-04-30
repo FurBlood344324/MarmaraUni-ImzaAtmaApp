@@ -9,6 +9,7 @@ yarn.lock
 
 #Environment Files
 .env
+nginx.conf
 
 # testing
 /coverage

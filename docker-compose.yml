@@ -1,0 +1,36 @@
+version: "3.8"
+
+services:
+  api:
+    build: ./backend
+    container_name: my-flask-api
+    ports:
+      - "5000:5000"
+    env_file: .env
+    depends_on:
+      - db
+
+  frontend:
+    build: ./frontend  
+    container_name: my-react-app
+    ports:
+      - "3000:80"
+    env_file: .env
+    depends_on:
+      - api
+
+  db:
+    image: postgres:alpine
+    container_name: postgres-db
+    restart: always
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
