@@ -1,14 +1,14 @@
-from api.entities.resp_entity import db, API_RESP
+from api.entities.entities import db, RESP
 
 def fetch_all_resps():
-    return [api.json() for api in API_RESP.query.all()]
+    return [api for api in RESP.query.all()]
 
 def add_resp_to_db(hash, message):
-    new_resp = API_RESP(
+    new_resp = RESP(
       id=hash,
       message=message
     )
     db.session.add(new_resp)
     db.session.commit()
 
-    return new_resp.json()
+    return new_resp

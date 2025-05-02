@@ -1,6 +1,6 @@
 from flask import Flask
-from api.controllers.resp_controller import api_bp 
-from api.entities.resp_entity import db
+from api.entities.entities import db
+from api.controllers.api import register_blueprints
 
 def create_app():
     app = Flask(__name__)
@@ -16,6 +16,6 @@ def create_app():
             except Exception as e:
                 print(f"Database creation failed: {e}")
     
-    app.register_blueprint(api_bp)
+    register_blueprints(app)
 
     return app

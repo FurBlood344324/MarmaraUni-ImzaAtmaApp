@@ -1,12 +1,10 @@
 from flask import Blueprint, request, jsonify, make_response
 from api.services.resp_service import get_all_resps, create_resp
 from api.utils import generate_hash
-from flask_cors import CORS
 
-api_bp = Blueprint('api', __name__)
-CORS(api_bp)
+resp_bp = Blueprint('resp', __name__, url_prefix='/resp')
 
-@api_bp.route('/api', methods=['GET'])
+@resp_bp.route('/', methods=['GET'])
 def get_api():
   try:
     resp = make_response(jsonify(get_all_resps()), 200)
@@ -14,7 +12,7 @@ def get_api():
   except Exception as e:
     return make_response(jsonify({'message': str(e)}), 500)
   
-@api_bp.route('/api', methods=['POST'])
+@resp_bp.route('/', methods=['POST'])
 def create_url():
   try:
     data = request.get_json() 
