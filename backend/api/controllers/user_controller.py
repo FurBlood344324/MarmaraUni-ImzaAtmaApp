@@ -7,7 +7,7 @@ from api.permissions.permissions import RolesPermissions
 user_bp = Blueprint('user', __name__, url_prefix='/')
 
 @user_bp.route('/<role>/register', methods=['POST'])
-def admin_register(role):
+def register(role):
   if role not in RolesPermissions:
     return make_response(jsonify({'message': 'Invalid role'}), 400)
   try:
@@ -27,17 +27,17 @@ def admin_register(role):
   
   
 @user_bp.route('/<role>/login', methods=['POST'])
-def admin_login(role):
+def login(role):
   if role not in RolesPermissions:
     return make_response(jsonify({'message': 'Invalid role'}), 400)
   try:
-    data = request.get_json() 
+    data = request.get_json()
     username = data.get("username")
     password = data.get("password")
     token = generate_token(username, password)
     if token != "Unauthorized":
       return make_response(jsonify({"token": token}), 200)
-    return make_response(jsonify(token), 401)   
+    return make_response(jsonify({"token": token}), 401)   
   except Exception as e:
     return make_response(jsonify({'message': str(e)}), 500)
 
