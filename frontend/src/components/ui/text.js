@@ -21,11 +21,16 @@ const text_class = cva({
       serif: 'font-serif',
       mono: 'font-mono',
     },
+    visible: {
+      true: '',
+      false: 'hidden',
+    },
   },
   defaultVariants: {
     size: 'base',
     color: 'primary',
     font: 'sans',
+    visible: 'false',
   },
 })
 

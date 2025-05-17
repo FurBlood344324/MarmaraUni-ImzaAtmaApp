@@ -1,13 +1,13 @@
 import datetime
 from datetime import datetime, timedelta
 from api.repositories.user_repository import fetch_user_from_username, fetch_user_from_id, add_user_to_db
-from api.utils import generate_hash
 from api.middleware.jwt import encode_token
 
-def create_user(hash, username, password, role):
-    user = add_user_to_db(hash, username,password, role)
+def create_user(hash, name, surname, no, email, username, password, role):
+    user = add_user_to_db(hash, name, surname, no, email, username,password, role)
     if user:
         return user.json()
+    
     return None
 
 def generate_token(username, password):
@@ -27,4 +27,5 @@ def get_user_role(user_id):
     user = fetch_user_from_id(user_id)
     if not user:
         return None
+    
     return user.role

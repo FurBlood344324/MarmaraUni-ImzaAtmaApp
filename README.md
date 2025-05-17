@@ -74,6 +74,7 @@ FLASK_APP=backend/app.py
 FLASK_ENV={development/production}
 SQLALCHEMY_TRACK_MODIFICATIONS=False
 HOST=0.0.0.0
+SECRET_KEY=<your_secretkey>
 ```
 
 > `FLASK_APP` değeri senin Flask dosyanın yoluna göre ayarlanmalıdır. Örneğin `backend/app.py` dosyasını çalıştırıyorsan yukarıdaki gibi bırakabilirsin.
@@ -168,6 +169,7 @@ FLASK_APP=backend/app.py
 FLASK_ENV={development/production}
 SQLALCHEMY_TRACK_MODIFICATIONS=False
 HOST=0.0.0.0
+SECRET_KEY=<your_secretkey>
 ```
 
 > `FLASK_APP` değeri senin Flask dosyanın yoluna göre ayarlanmalıdır. Örneğin `backend/app.py` dosyasını çalıştırıyorsan yukarıdaki gibi bırakabilirsin.
