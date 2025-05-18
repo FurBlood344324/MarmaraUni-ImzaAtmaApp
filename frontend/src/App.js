@@ -4,21 +4,19 @@ import LoginPage from './pages/login_page'
 import RegisterPage from './pages/register_page'
 import PushSignaturePage from './pages/push_signature_page'
 import CreateSignaturePage from './pages/create_signature_page'
-import MainPage from './pages/main_page'
 import QRCodePage from './pages/qrcode_page'
 import LookUpListPage from './pages/lookup_list_page'
 
 function App() {
   return (
     <Routes>
-      <Route path="/" element={<MainPage />} />
-      <Route path="/main" element={<LoginnedMainPage />} />
-      <Route path="/login" element={<LoginPage />} />
+      <Route path="/:sessionId?" element={<LoginPage />} />
       <Route path="/register" element={<RegisterPage />} />
-      <Route path="/main/signature/push" element={<PushSignaturePage />} />
+      <Route path="/main" element={<LoginnedMainPage />} />
+      <Route path="/main/signature/push/:sessionId" element={<PushSignaturePage />} />
       <Route path="/main/signature/create" element={<CreateSignaturePage />} />
-      <Route path="/main/qrcode" element={<QRCodePage />} />
-      <Route path="/main/lookup" element={<LookUpListPage />} />
+      <Route path="/main/qrcode/:sessionId/:course" element={<QRCodePage />} />
+      <Route path="/main/lookup/:sessionId" element={<LookUpListPage />} />
     </Routes>
   )
 }

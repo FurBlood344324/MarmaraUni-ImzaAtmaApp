@@ -21,7 +21,7 @@ const button_class = cva('font-bold font-medium rounded-lg me-2 mb-2', {
 const Button = ({ classNameIn, classNameOut, children, onClick, ...props }) => {
   return (
     <div className={`${classNameOut}`}>
-      <button className={`${classNameIn}` + button_class(props)} onClick={onClick}>
+      <button className={`w-full ${classNameIn}` + button_class(props)} onClick={onClick}>
         {children}
       </button>
     </div>
