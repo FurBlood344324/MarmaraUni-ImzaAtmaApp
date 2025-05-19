@@ -34,12 +34,8 @@ const text_class = cva({
   },
 })
 
-const Text = ({ classNameIn, classNameOut, children, ...props }) => {
-  return (
-    <div className={`${classNameOut} py-1`}>
-      <p className={`${classNameIn}` + text_class(props)}>{children}</p>
-    </div>
-  )
+const Text = ({ className, children, ...props }) => {
+  return <p className={`${className} ` + text_class(props)}>{children}</p>
 }
 
 export default Text

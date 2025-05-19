@@ -92,6 +92,28 @@ def get_task_for_user():
     except Exception as e:
         return make_response(jsonify({'message': str(e)}), 500)
     
+@task_bp.route('/gettaskbytaskid', methods=['GET'])
+@check_permission("read")
+def get_task_with_taskid():
+    try:
+        data_h = dict(request.headers)
+
+        task_id = data_h.get('Task-Id')
+
+        if task_id:
+            task = get_task_by_taskid(task_id)
+
+            if not task:
+                return make_response(jsonify({'message': 'Task with this taskid doesnt exists'}), 400)
+            
+            resp = make_response(jsonify(task), 200)
+
+            return resp
+        
+        return make_response({'message': 'Infos are wrong'}, 400)
+    except Exception as e:
+        return make_response(jsonify({'message': str(e)}), 500)
+    
 @task_bp.route('/<taskid>/checktask', methods=['POST'])
 @check_permission("read")
 def task_check(taskid):

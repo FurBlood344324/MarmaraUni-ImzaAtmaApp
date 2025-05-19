@@ -1,6 +1,6 @@
 import { cva } from 'class-variance-authority'
 
-const cardClass = cva('rounded-2xl p-6 max-w-sm transition-shadow', {
+const cardClass = cva('rounded-2xl p-6 transition-shadow', {
   variants: {
     theme: {
       light: 'bg-white text-black',
@@ -19,7 +19,7 @@ const cardClass = cva('rounded-2xl p-6 max-w-sm transition-shadow', {
 })
 
 const Card = ({ className, children, ...props }) => {
-  return <div className={`${className}` + cardClass(props)}>{children}</div>
+  return <div className={`${className} ` + cardClass(props)}>{children}</div>
 }
 
 export default Card

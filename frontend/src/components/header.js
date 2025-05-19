@@ -8,7 +8,7 @@ const Header = ({ className, text, username }) => {
           {text}
         </div>
         <ul className="m-0 flex list-none gap-5 p-0">
-          <HeaderElement href="/">{username}</HeaderElement>
+          <HeaderElement href="/logout">{username}</HeaderElement>
         </ul>
       </nav>
     </header>

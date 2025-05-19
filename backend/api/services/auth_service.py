@@ -29,3 +29,16 @@ def get_user_role(user_id):
         return None
     
     return user.role
+
+def get_usersname_and_no_with_userid(user_id):
+    user = fetch_user_from_id(user_id)
+    if not user:
+        return None
+    
+    name = user.name
+    no = user.no
+
+    return {
+        "name": name,
+        "no": no
+    }, 200

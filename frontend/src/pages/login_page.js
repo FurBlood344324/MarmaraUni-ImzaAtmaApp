@@ -26,7 +26,7 @@ const LoginPage = () => {
 
   useEffect(() => {
     const token = getCookie('token')
-    console.log(token)
+
     if (token && token !== 'Unauthorized') {
       navigate('/main')
     }
@@ -74,7 +74,7 @@ const LoginPage = () => {
   }
 
   return (
-    <Layout username="">
+    <Layout username="Oturum Aç">
       <Card>
         <Title>Giris Yap</Title>
         <TextInput
@@ -95,7 +95,7 @@ const LoginPage = () => {
             onChange={HandleChange}
             checked={role === 'admin'}
           />
-          <Text classNameOut="pr-2">Admin</Text>
+          <Text className="pr-2">Admin</Text>
           <RadioButton
             className="pr-2"
             name="role"

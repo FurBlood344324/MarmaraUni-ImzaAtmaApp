@@ -1,5 +1,5 @@
 from flask import Blueprint, request, jsonify, make_response
-from api.services.auth_service import create_user, generate_token
+from api.services.auth_service import create_user, generate_token, get_usersname_and_no_with_userid
 from api.utils import generate_hash
 from api.middleware.authorization import check_permission, get_user_id
 from api.permissions.permissions import RolesPermissions
@@ -57,6 +57,24 @@ def login(role):
     return make_response(jsonify({"token": token}), 401)   
   except Exception as e:
     return make_response(jsonify({'message': str(e)}), 500)
+  
+@user_bp.route('/getnameandno', methods=['GET'])
+@check_permission("write")
+def get_name_and_no_by_userid():
+  try:
+    data_h = dict(request.headers)
+
+    user_id = data_h.get('Creator-Id')
+
+    if user_id:
+      resp = get_usersname_and_no_with_userid(user_id)
+
+      return make_response(resp)
+
+    return make_response(jsonify({'message': 'Infos are wrong'}), 400)
+  except Exception as e:
+    return make_response(jsonify({'message': str(e)}), 500)
+
 
 @user_bp.route('/<role>/checkpermission', methods=['GET'])
 @check_permission("write")

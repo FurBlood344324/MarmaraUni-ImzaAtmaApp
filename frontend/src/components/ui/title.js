@@ -27,7 +27,7 @@ const title_class = cva('font-bold text-gray-900 py-3', {
 })
 
 const Title = ({ className, children, ...props }) => {
-  return <h2 className={`${className}` + title_class(props)}>{children}</h2>
+  return <h2 className={`${className} ` + title_class(props)}>{children}</h2>
 }
 
 export default Title
