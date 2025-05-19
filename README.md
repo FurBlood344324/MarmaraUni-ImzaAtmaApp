@@ -23,16 +23,20 @@ git clone https://github.com/FurBlood344324/MarmaraUni-ImzaAtmaApp.git
 cd MarmaraUni-ImzaAtmaApp
 ```
 
-### 2. Frontend Projesini Kur ve Derle
+### 2. Frontend Config Ayarını Yap
 
 ```bash
-cd frontend
-yarn install
-yarn format
-yarn build
+cd frontend/src
 ```
+Bu klasörün içindeki config.js dosyasını açıp aşagıdaki gibi düzenleyin 
 
-Bu adım React projesini derleyerek `build/` klasörü oluşturur.
+```config.js
+export const B_PORT = '5000'
+export const F_PORT = '3000'
+export const IP = '<your_local_ip>'
+export const URL = `http://${IP}:${B_PORT}`
+export const F_URL = `http://${IP}:${F_PORT}`
+```
 
 ---
 
@@ -71,7 +75,7 @@ POSTGRES_DB=your_dbname
 
 # Flask Ayarları
 FLASK_APP=backend/app.py
-FLASK_ENV={development/production}
+FLASK_ENV=production
 SQLALCHEMY_TRACK_MODIFICATIONS=False
 HOST=0.0.0.0
 SECRET_KEY=<your_secretkey>
@@ -81,9 +85,20 @@ SECRET_KEY=<your_secretkey>
 
 > `FLASK_ENV` değeri hangi modda çalıştıracagına göre ayarlanmalıdır. WSGI server ile çalıştıracaksan production yapılmalıdır.
 
+### 5. Frontend Projesini Kur ve Derle
+
+```bash
+cd frontend
+yarn install
+yarn format
+yarn build
+```
+
+Bu adım React projesini derleyerek `build/` klasörü oluşturur.
+
 ---
 
-### 5. Docker Compose ile Uygulamayı Başlat
+### 6. Docker Compose ile Uygulamayı Başlat
 
 Tüm servisleri başlatmak için aşağıdaki komutu çalıştırın:
 
@@ -164,12 +179,18 @@ pip install -r requirements.txt
 ### 5. Ortam Degiskenkerini Ayarlayın
 
 ```env
+# PostgreSQL Ayarları
+DATABASE_URL= postgresql://<your_username>:<your_password>@localhost:5432/postgres
+POSTGRES_USER=<your_username>
+POSTGRES_PASSWORD=<your_password>
+POSTGRES_DB=<your_database_name>
+
 # Flask Ayarları
 FLASK_APP=backend/app.py
-FLASK_ENV={development/production}
+FLASK_ENV=development
 SQLALCHEMY_TRACK_MODIFICATIONS=False
 HOST=0.0.0.0
-SECRET_KEY=<your_secretkey>
+SECRET_KEY=<your_secret_key>
 ```
 
 > `FLASK_APP` değeri senin Flask dosyanın yoluna göre ayarlanmalıdır. Örneğin `backend/app.py` dosyasını çalıştırıyorsan yukarıdaki gibi bırakabilirsin.

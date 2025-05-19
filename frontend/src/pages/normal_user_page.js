@@ -19,8 +19,16 @@ const NormalUserPage = () => {
     setUrl(event.target.value)
   }
 
-  const HandleLogin = ({ path }) => {
-    navigate(path)
+  const HandleLogin = () => {
+    const match = url.match(new RegExp('^https?:\\/\\/[^\\/]+(\\/.*)$'))
+
+    if (match !== null) {
+      navigate(`${match[1]}`)
+    } else {
+      setError('Hatalı Url Girdiniz (http://<ip>:<port>/<child_url> şeklinde bir url girilmeli)!')
+      setVisible('')
+      return
+    }
   }
 
   const getCookie = (name) => {
@@ -75,7 +83,7 @@ const NormalUserPage = () => {
         <Button
           classNameOut="flex justify-center pt-4"
           classNameIn="w-[50%]"
-          onClick={() => HandleLogin({ path: '/main/signature/push/j3h5j' })}
+          onClick={() => HandleLogin()}
         >
           İmza At
         </Button>
